@@ -1,0 +1,50 @@
+# Nama Workflow
+name: Deploy Portfolio to GitHub Pages
+
+# Kapan workflow ini berjalan
+on:
+  # Berjalan otomatis setiap kali ada 'push' ke branch 'main'
+  push:
+    branches: ["main"]
+  # Memungkinkan Anda menjalankan workflow ini secara manual dari tab Actions
+  workflow_dispatch:
+
+# Mengatur izin untuk workflow agar bisa men-deploy ke GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Mengizinkan hanya satu deployment berjalan pada satu waktu
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+# Mendefinisikan 'jobs' atau pekerjaan yang akan dilakukan
+jobs:
+  # Pekerjaan pertama: membangun website
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Mengunggah seluruh isi repository
+          path: '.'
+      
+  # Pekerjaan kedua: menayangkan website
+  deploy:
+    # Hanya berjalan setelah job 'build' selesai
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
