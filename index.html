@@ -5,21 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyPortfolio</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    
 </head>
 <body>
-
     
     <nav class="navbar">
         <div class="nav-logo">
             <a href="#home">MyPortfolio</a>
         </div>
+        
         <div class="nav-links">
+            <button class="close-btn" aria-label="Close menu">&times;</button>
             <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </div>
+
+        <button class="hamburger-btn" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 
     <section id="home">
@@ -94,12 +100,6 @@
         <div class="contact-container reveal">
             <h2 class="section-title">Get In Touch</h2>
             <p>I'm currently looking for new opportunities, especially for an internship role. My inbox is always open, whether you have a question, a project idea, or just want to say hi, I'll get back to you!</p>
-            <!-- <form class="contact-form" action="#" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" required></textarea>
-                <button type="submit" class="btn-primary">Say Hello</button>
-            </form> -->
             <div class="contact-divider">Connect with me on</div>
             <div class="social-links">
                 <a href="mailto:alfioke7@gmail.com" title="Email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
